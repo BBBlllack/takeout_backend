@@ -1,0 +1,37 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: software_takeout
+  datasource:
+    url: jdbc:mysql://localhost:3306/software_takeout?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: 12345678
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  boot:
+    admin:
+      client:
+        url: http://49.232.244.90/ # 注册SpringbootAdmin
+        connect-timeout: 50000ms
+        read-timeout: 50000ms
+#        url: http://localhost:8080 # 注册SpringbootAdmin地址
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: "*" # 暴露所有
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 开启mp运行日志
+    map-underscore-to-camel-case: true # 驼峰映射
+  mapper-locations: classpath:/mapper/*.xml
+
+cors:
+  config:
+    ip: http://127.0.0.1:5173 # 允许跨域的ip
+
