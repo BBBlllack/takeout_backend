@@ -33,6 +33,7 @@ public class RestaurantController {
      */
     @PostMapping("/login")
     public ApiResponse<Map<String, String>> login(@RequestBody Restaurant restaurant, HttpServletResponse response) {
+        log.error(restaurant.toString());
         LambdaQueryWrapper<Restaurant> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(Restaurant::getPhone, restaurant.getPhone())
                 .eq(Restaurant::getPassword, restaurant.getPassword());

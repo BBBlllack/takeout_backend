@@ -32,6 +32,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         log.info("加载静态资源解析器...");
+        registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
     }
 
     @Override
@@ -44,6 +45,9 @@ public class WebMvcConfig implements WebMvcConfigurer {
         loginUrlsExcludes.add("/user/login");
         loginUrlsExcludes.add("/rest/login");
         loginUrlsExcludes.add("/test/**");
+        loginUrlsExcludes.add("/show/**");
+        loginUrlsExcludes.add("/static/**");
+        loginUrlsExcludes.add("/deliver/**");
         loginUrlsExcludes.add("/actuator/**");
         loginUrlsExcludes.add("/instances");
         loginUrlsExcludes.add("/error ");

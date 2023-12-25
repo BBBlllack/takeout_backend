@@ -13,6 +13,7 @@ import org.apache.http.util.EntityUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.servlet.Servlet;
 import java.io.IOException;
 
 /**
@@ -22,7 +23,6 @@ import java.io.IOException;
 public class HttpClientTest {
 
     @Test
-
     void testGet() throws IOException {
         CloseableHttpClient httpClient = HttpClients.createDefault();
         HttpGet httpGet = new HttpGet();

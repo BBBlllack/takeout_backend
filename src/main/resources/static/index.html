@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/el.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <el-container>
+            <el-container>
+                <el-aside style="width: 15rem">
+                    <el-menu
+                            default-active="2"
+                            class="el-menu-vertical-demo"
+                            @open="handleOpen"
+                            @close="handleClose">
+                        <el-menu-item index="1">
+                            <i class="el-icon-menu"></i>
+                            <span slot="title">门店管理</span>
+                        </el-menu-item>
+                        <el-menu-item index="2">
+                            <i class="el-icon-menu"></i>
+                            <span slot="title">食客信息</span>
+                        </el-menu-item>
+                        <el-menu-item index="3">
+                            <i class="el-icon-document"></i>
+                            <span slot="title">系统设置</span>
+                        </el-menu-item>
+                    </el-menu>
+                </el-aside>
+                <el-main>
+                    <el-table
+                            :data="restData"
+                            height="250"
+                            border
+                            style="width: 100%">
+                        <el-table-column
+                                prop="date"
+                                label="日期"
+                                width="180">
+                        </el-table-column>
+                        <el-table-column
+                                prop="name"
+                                label="姓名"
+                                width="180">
+                        </el-table-column>
+                        <el-table-column
+                                prop="address"
+                                label="地址">
+                        </el-table-column>
+                    </el-table>
+                </el-main>
+            </el-container>
+        </el-container>
+    </div>
+</body>
+</html>
+<style>
+    .el-aside{
+        height: 100vh;
+    }
+    .el-menu-item {
+        margin-left: 0.5rem;
+        margin-top: 3rem;
+    }
+</style>
+<script src="./js/vue.js"></script>
+<script src="./js/el.js"></script>
+<script src="./js/axios-0.18.0.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data(){
+            return {
+                msg: "hello",
+                restData:[],
+            }
+        },
+        methods:{
+            getRest(){
+                axios.get("/")
+            },
+        },
+        mounted(){
+            this.getRest();
+        }
+    })
+</script>
