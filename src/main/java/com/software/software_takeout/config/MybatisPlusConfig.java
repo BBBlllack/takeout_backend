@@ -2,6 +2,7 @@ package com.software.software_takeout.config;
 
 import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
+import com.software.software_takeout.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
@@ -12,8 +13,13 @@ import org.springframework.context.annotation.Configuration;
 @MapperScan("com.software.software_takeout.mapper")
 public class MybatisPlusConfig {
 
+    /**
+     * mybatis-plus 分页拦截器
+     *
+     * @return
+     */
     @Bean
-    public MybatisPlusInterceptor mybatisPlusInterceptor(){
+    public MybatisPlusInterceptor mybatisPlusInterceptor() {
         MybatisPlusInterceptor mybatisPlusInterceptor = new MybatisPlusInterceptor();
         mybatisPlusInterceptor.addInnerInterceptor(new PaginationInnerInterceptor());
         log.info("加载Mybatis-Plus拦截器...");

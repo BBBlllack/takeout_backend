@@ -1,0 +1,27 @@
+# 读写分离数据库配置
+spring:
+  shardingsphere:
+    datasource:
+      names: master,slave
+      master:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/master?useUnicode=true&characterEncoding=utf8
+        username: root
+        password: root
+      slave:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3307/slave?useUnicode=true&characterEncoding=utf8
+        username: root
+        password: root
+    masterslave:
+      #  定义读写分离数据源, 轮询
+      load-balance-algorithm-type: round_robin
+      name: dataSource
+      # 主库
+      master-data-source-name: master
+      # 从库，多个用逗号分割
+      slave-data-source-names: slave
+    props:
+      sql:
+        # 开启sql显示
+        show: true

@@ -44,14 +44,15 @@ public class WebMvcConfig implements WebMvcConfigurer {
         // 不拦截的请求
         loginUrlsExcludes.add("/user/login");
         loginUrlsExcludes.add("/rest/login");
+        loginUrlsExcludes.add("/rest/user/list");
         loginUrlsExcludes.add("/test/**");
         loginUrlsExcludes.add("/show/**");
         loginUrlsExcludes.add("/static/**");
         loginUrlsExcludes.add("/deliver/**");
         loginUrlsExcludes.add("/actuator/**");
         loginUrlsExcludes.add("/instances");
-        loginUrlsExcludes.add("/error ");
-//        registry.addInterceptor(consumeTimeInterceptor).addPathPatterns("/**");
+        loginUrlsExcludes.add("/error");
+        registry.addInterceptor(consumeTimeInterceptor).addPathPatterns("/**");
         registry.addInterceptor(loginInterceptor).addPathPatterns(loginUrls).excludePathPatterns(loginUrlsExcludes);
     }
 

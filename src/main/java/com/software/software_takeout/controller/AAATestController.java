@@ -18,11 +18,12 @@ public class AAATestController {
 
     /**
      * 前端传javaBean数组
+     *
      * @param users
      * @return
      */
     @PostMapping("/obj")
-    public ApiResponse<Object> testRecvObjs(@RequestBody User[] users){
+    public ApiResponse<Object> testRecvObjs(@RequestBody User[] users) {
         for (User user : users) {
             log.info(user.toString());
         }

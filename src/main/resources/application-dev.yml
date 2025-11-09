@@ -9,22 +9,26 @@ spring:
     username: root
     password: 12345678
     driver-class-name: com.mysql.cj.jdbc.Driver
+  # redis 配置
+#  redis:
+#    host: localhost
+#    port: 6379
   # spring.boot.admin.client.url=http://49.232.244.90/
-  boot:
-    admin:
-      client:
-        url: http://49.232.244.90/ # 注册SpringbootAdmin
-        connect-timeout: 50000ms
-        read-timeout: 50000ms
-#        url: http://localhost:8080 # 注册SpringbootAdmin地址
-management:
-  endpoint:
-    health:
-      show-details: always
-  endpoints:
-    web:
-      exposure:
-        include: "*" # 暴露所有
+#  boot:
+#    admin:
+#      client:
+##        url: http://49.232.244.90/ # 注册SpringbootAdmin
+#        connect-timeout: 50000ms
+#        read-timeout: 50000ms
+#        url: http://localhost:8081 # 注册SpringbootAdmin地址
+#management:
+#  endpoint:
+#    health:
+#      show-details: always
+#  endpoints:
+#    web:
+#      exposure:
+#        include: "*" # 暴露所有
 
 mybatis-plus:
   configuration:
@@ -35,4 +39,8 @@ mybatis-plus:
 cors:
   config:
     ip: http://127.0.0.1:5173 # 允许跨域的ip
+
+author:
+  title: "This is default title"
+  info: a,b,c
 

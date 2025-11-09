@@ -25,7 +25,7 @@ public class LoginInterceptor implements HandlerInterceptor {
             ThreadLocalUtil.set(map);
         }catch (Exception e){
             // 未携带令牌
-            response.setStatus(401);
+            response.setStatus(HttpStatus.UNAUTHORIZED.value());
             ObjectMapper mapper = new ObjectMapper();
             response.getWriter().write(mapper.writeValueAsString(ApiResponse.error(401, "NOT LOGIN")));
             return false;

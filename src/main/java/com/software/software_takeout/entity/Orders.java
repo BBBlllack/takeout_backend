@@ -18,6 +18,7 @@ public class Orders implements Serializable {
     private Long aid;
     private Long rid;
     private BigDecimal totalprice;
+    @JsonFormat(pattern = "yyyy-MM-mm/hh:MM:ss")
     @TableField(fill = FieldFill.DEFAULT)
     private LocalDateTime createTime;
     private String comment;

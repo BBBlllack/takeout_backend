@@ -65,7 +65,8 @@ public class DishController {
         }
         LambdaQueryWrapper<Dish> dishWrapper = new LambdaQueryWrapper<>();
         // 返回正常的菜品
-        dishWrapper.eq(Dish::getCid, cid);
+        dishWrapper.eq(Dish::getCid, cid)
+                .eq(Dish::getStatus, EntityStatus.NORMAL);
         return ApiResponse.success(dishService.page(iPage, dishWrapper), "用户获取分页菜品成功!");
     }
 

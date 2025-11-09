@@ -1,0 +1,56 @@
+# 需要配置mysql密码
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: mysql8_container
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345678
+    ports:
+      - "3406:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./init.cn.sql:/docker-entrypoint-initdb.d/init.sql
+
+  app:
+    image: openjdk:8
+    container_name: javaApp_container
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - "8180:80"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/software_takeout?useUnicode=true&characterEncoding=utf8
+      SPRING_REDIS_HOST: redis
+      AUTHOR_TITLE: "软件编程综合实践大作业"
+      AUTHOR_INFO: ""
+    volumes:
+        - ./target/software_takeout-0.0.1-SNAPSHOT.jar:/app/images.jar
+    entrypoint:
+      - "java"
+      - "-jar"
+      - "/app/images.jar"
+
+  redis:
+    image: redis:7.2
+    container_name: redis_container
+    restart: always
+    depends_on:
+      - app
+
+  nginx:
+    image: nginx:1.18.0
+    container_name: nginx_container
+    restart: always
+    depends_on:
+      - app
+    ports:
+      - "8280:8280"
+    volumes:
+      - ./html:/usr/share/nginx/html
+      - ./nginx.conf:/etc/nginx/nginx.conf
+
+volumes:
+  db_data:

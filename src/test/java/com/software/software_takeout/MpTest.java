@@ -1,18 +1,19 @@
 package com.software.software_takeout;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.software.software_takeout.entity.Category;
 import com.software.software_takeout.entity.Dish;
 import com.software.software_takeout.entity.Orders;
-import com.software.software_takeout.service.CategoryService;
-import com.software.software_takeout.service.DeliverService;
-import com.software.software_takeout.service.DishService;
-import com.software.software_takeout.service.OrdersService;
+import com.software.software_takeout.entity.User;
+import com.software.software_takeout.service.*;
 import com.software.software_takeout.util.StringUtil;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -30,6 +31,9 @@ public class MpTest {
 
     @Resource
     private DeliverService deliverService;
+
+    @Resource
+    private UserService userService;
 
     @Test
     void testAdd() {
@@ -61,4 +65,10 @@ public class MpTest {
             deliverService.insertDomap(count++, oid, null);
         }
     }
+
+    @Test
+    void testUserService(){
+
+    }
+
 }
